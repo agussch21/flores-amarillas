@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Amarillas - Feliz Día de la Primavera</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuente elegante de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="night">
+    <!-- Fondo canvas para partículas y estrellas -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Contenedor Principal -->
+    <main class="container">
+        <!-- Título -->
+        <header class="header">
+            <h1 class="title">Feliz día de la Primavera Amor 🌻</h1>
+            <p class="subtitle">Para Flor, un ramo amarillo que nunca se marchita.</p>
+        </header>
+
+        <!-- Ramillete de 5 Flores Amarillas -->
+        <div class="flower-field">
+            <!-- Flor 1 (Extremo Izquierda) -->
+            <div class="flower flower-1">
+                <div class="stem">
+                    <div class="leaf leaf-left"></div>
+                    <div class="leaf leaf-right"></div>
+                </div>
+                <div class="petals">
+                    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+                    <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+                    <div class="flower-center"></div>
+                </div>
+            </div>
+
+            <!-- Flor 4 (Intermedia Izquierda) -->
+            <div class="flower flower-4">
+                <div class="stem">
+                    <div class="leaf leaf-left"></div>
+                    <div class="leaf leaf-right"></div>
+                </div>
+                <div class="petals">
+                    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+                    <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+                    <div class="flower-center"></div>
+                </div>
+            </div>
+
+            <!-- Flor 2 (Centro - Principal) -->
+            <div class="flower flower-2">
+                <div class="stem">
+                    <div class="leaf leaf-left"></div>
+                    <div class="leaf leaf-right"></div>
+                </div>
+                <div class="petals">
+                    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+                    <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+                    <div class="flower-center"></div>
+                </div>
+            </div>
+
+            <!-- Flor 5 (Intermedia Derecha) -->
+            <div class="flower flower-5">
+                <div class="stem">
+                    <div class="leaf leaf-left"></div>
+                    <div class="leaf leaf-right"></div>
+                </div>
+                <div class="petals">
+                    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+                    <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+                    <div class="flower-center"></div>
+                </div>
+            </div>
+
+            <!-- Flor 3 (Extremo Derecha) -->
+            <div class="flower flower-3">
+                <div class="stem">
+                    <div class="leaf leaf-left"></div>
+                    <div class="leaf leaf-right"></div>
+                </div>
+                <div class="petals">
+                    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+                    <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+                    <div class="flower-center"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="controls">
+            <button id="btnMusic" class="btn">🎵 Reproducir Canción</button>
+            <button id="btnLetter" class="btn">✉️ Ver Mensaje</button>
+            <button id="btnPetals" class="btn primary">✨ Lluvia de Flores</button>
+        </div>
+
+        <!-- Archivo de audio local descargado -->
+        <audio id="audioFloricienta" src="flores_amarillas.mp3" preload="auto" loop></audio>
+    </main>
+
+    <!-- Ventana Modal con la Carta -->
+    <div id="modalLetter" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Una carta para vos... 🌼</h2>
+            <p id="letterText" class="letter-body">
+                Feliz primavera mi vida.Se que estas flores son virtuales, pero lo que quiero transmitir con ellas es completamente real 💛
+                Quería regalarte algo, aunque sea a través de la pantalla, y decirte lo mucho que te amo y lo feliz que me hace estar con vos.
+Ojalá podamos compartir muchísimas primaveras juntos 🌻❤️<br><br>
+                
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

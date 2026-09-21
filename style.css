@@ -1,0 +1,331 @@
+/* Reset y variables base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #090a0f, #111e38, #1a0b2e);
+    color: #fff;
+    transition: background 1s ease;
+}
+
+/* Canvas para las estrellas y partículas flotantes */
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Contenedor principal */
+.container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 90vh;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Encabezado */
+.header {
+    margin-top: 10px;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    margin-bottom: 5px;
+    animation: fadeInDown 1.5s ease;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #f3e5ab;
+    font-weight: 300;
+    animation: fadeIn 2s ease;
+}
+
+/* Campo de Ramillete con 5 Flores */
+.flower-field {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+    height: 400px;
+    width: 100%;
+    position: relative;
+    margin: 20px 0;
+}
+
+/* Estructura Individual de cada Flor */
+.flower {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: bottom center;
+}
+
+/* Configuración de inclinaciones, escalas y animaciones para el ramo de 5 flores */
+.flower-1 {
+    transform: scale(0.75) rotate(-22deg);
+    z-index: 1;
+    animation: swayFarLeft 4.2s ease-in-out infinite alternate;
+}
+
+.flower-4 {
+    transform: scale(0.9) rotate(-10deg);
+    z-index: 2;
+    animation: swayMidLeft 3.8s ease-in-out infinite alternate;
+}
+
+.flower-2 {
+    transform: scale(1.15);
+    z-index: 4;
+    animation: swayCenter 5s ease-in-out infinite alternate;
+}
+
+.flower-5 {
+    transform: scale(0.9) rotate(10deg);
+    z-index: 2;
+    animation: swayMidRight 4.4s ease-in-out infinite alternate;
+}
+
+.flower-3 {
+    transform: scale(0.75) rotate(22deg);
+    z-index: 1;
+    animation: swayFarRight 4.6s ease-in-out infinite alternate;
+}
+
+/* Tallo */
+.stem {
+    width: 10px;
+    height: 230px;
+    background: linear-gradient(to right, #2e7d32, #4caf50);
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Hojas del tallo */
+.leaf {
+    position: absolute;
+    width: 45px;
+    height: 22px;
+    background: #388e3c;
+    border-radius: 0 50px 0 50px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.leaf-left {
+    top: 80px;
+    left: -40px;
+    transform: rotate(-25deg);
+}
+
+.leaf-right {
+    top: 130px;
+    right: -40px;
+    transform: scaleX(-1) rotate(-25deg);
+}
+
+/* Pétalos y Centro */
+.petals {
+    position: absolute;
+    top: -40px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bloom 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.flower-center {
+    width: 45px;
+    height: 45px;
+    background: radial-gradient(circle, #8d5b4c, #4a2c11);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: inset 0 0 8px #2d1808, 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.petal {
+    position: absolute;
+    width: 38px;
+    height: 75px;
+    background: linear-gradient(to top, #ffb300, #ffeb3b, #fffde7);
+    border-radius: 50% 50% 20% 20%;
+    transform-origin: bottom center;
+    box-shadow: 0 0 8px rgba(255, 235, 59, 0.5);
+    bottom: 50%;
+}
+
+/* Ángulos de los 8 pétalos */
+.p1 { transform: rotate(0deg); }
+.p2 { transform: rotate(45deg); }
+.p3 { transform: rotate(90deg); }
+.p4 { transform: rotate(135deg); }
+.p5 { transform: rotate(180deg); }
+.p6 { transform: rotate(225deg); }
+.p7 { transform: rotate(270deg); }
+.p8 { transform: rotate(315deg); }
+
+/* Controles y Botones */
+.controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+.btn.primary {
+    background: linear-gradient(45deg, #ffb300, #fbc02d);
+    color: #1a0b2e;
+    border: none;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+}
+
+.btn.primary:hover {
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.7);
+}
+
+/* Modal de Carta */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff8e1;
+    color: #333;
+    padding: 35px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 85%;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: popUp 0.4s ease;
+    border: 3px solid #ffe082;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.modal-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #f57f17;
+    margin-bottom: 15px;
+}
+
+.letter-body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4e342e;
+}
+
+/* Keyframes de animación */
+@keyframes bloom {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes swayFarLeft {
+    0% { transform: scale(0.75) rotate(-22deg); }
+    100% { transform: scale(0.75) rotate(-16deg); }
+}
+
+@keyframes swayMidLeft {
+    0% { transform: scale(0.9) rotate(-10deg); }
+    100% { transform: scale(0.9) rotate(-4deg); }
+}
+
+@keyframes swayCenter {
+    0% { transform: scale(1.15) rotate(-3deg); }
+    100% { transform: scale(1.15) rotate(3deg); }
+}
+
+@keyframes swayMidRight {
+    0% { transform: scale(0.9) rotate(10deg); }
+    100% { transform: scale(0.9) rotate(4deg); }
+}
+
+@keyframes swayFarRight {
+    0% { transform: scale(0.75) rotate(22deg); }
+    100% { transform: scale(0.75) rotate(16deg); }
+}
+
+@keyframes popUp {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
